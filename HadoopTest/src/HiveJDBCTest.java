@@ -22,14 +22,14 @@ public class HiveJDBCTest {
       System.exit(1);
     }
     //replace "hive" here with the name of the user the queries should run as
-    Connection con = DriverManager.getConnection("jdbc:hive2://ayxnbda1dm04.sce.com:10000/default;principal=hive/_HOST@SCET.EIXT.COM", "hive", "");
+    Connection con = DriverManager.getConnection("jdbc:hive2://<***DOMAINNAME*>.com:10000/default;principal=hive/_HOST@<**DOMAIN_NAME**>.COM", "hive", "");
     
     org.apache.hadoop.conf.Configuration conf = new  org.apache.hadoop.conf.Configuration();
     conf.set("hadoop.security.authentication", "Kerberos");
     UserGroupInformation.setConfiguration(conf);
     try {
     	//replace the keytab location accordingly
-		UserGroupInformation.loginUserFromKeytab("SCET.EIXT.COM", "/etc/security/keytabs/sapbodsadm.keytab");
+		UserGroupInformation.loginUserFromKeytab("***DOMAINNAME_COM***", "/etc/security/keytabs/sapbodsadm.keytab");
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
